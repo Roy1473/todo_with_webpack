@@ -1,4 +1,4 @@
-import { hello, App } from "../sub.js";
+import { hello, App } from "./modules/sub.js";
 import "@babel/polyfill";
 import "../styles/style.scss";
 console.log(hello("こんばんは"));
