@@ -1,15 +1,12 @@
-import { hello, App } from "./sub.js";
+import { hello, App } from "../sub.js";
 import "@babel/polyfill";
-import "./style.scss";
-const app = new App();
+import "../styles/style.scss";
 console.log(hello("こんばんは"));
+const app = new App();
+app.mount();
 
-const formElement = document.querySelector("#js-form");
-const inputElement = document.querySelector("#js-form-input");
-formElement.addEventListener("submit", (event) => {
-  event.preventDefault();
-  console.log(`入力値の値: ${inputElement.value}`);
-});
+//document.body.textContent = name;
+
 //const APIKEY = "eb4e48e8cf76334c1aa24b48aaae72ee";
 //const APIURL =
 //  "https://api.themoviedb.org/3/discover/movie?api_key=eb4e48e8cf76334c1aa24b48aaae72ee&sort_by=popularity.desc&page=1";
