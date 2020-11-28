@@ -9,7 +9,7 @@ export function escapeSpecialCharts(str) {
 
 /**
  *  HTML文字列からHTML要素を作成して返す
- * @param {sting} html
+ * @param {string} html
  */
 export function htmlToElement(html) {
   const template = document.createElement("template");

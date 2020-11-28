@@ -1,9 +1,14 @@
 import { hello, App } from "./modules/sub.js";
+import { EventEmitter } from "./modules/eventEmitter.js";
 import "@babel/polyfill";
 import "../styles/style.scss";
 console.log(hello("こんばんは"));
 const app = new App();
 app.mount();
+const event = new EventEmitter();
+event.addEventListener("test-event", () => console.log("One!"));
+event.addEventListener("test-event", () => console.log("Two!"));
+event.emit("test-event");
 
 //document.body.textContent = name;
 
