@@ -32,7 +32,6 @@ export function element(strings, ...values) {
       return result + String(value) + str;
     }
   });
-  console.log(htmlString);
   return htmlToElement(htmlString);
 }
 /**

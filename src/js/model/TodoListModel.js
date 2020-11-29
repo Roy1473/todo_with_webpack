@@ -5,6 +5,7 @@ export class TodoListModel extends EventEmitter {
    * @param {TodoItemModel[]} [items] 初期アイテム一覧（デフォルトは空の配列）
    */
   constructor(items = []) {
+    //super() = this._listeners = new Map();
     super();
     this.items = items;
   }
@@ -41,6 +42,25 @@ export class TodoListModel extends EventEmitter {
    */
   addTodo(todoItem) {
     this.items.push(todoItem);
+    this.emitChange();
+  }
+  /**
+   * 指定したidのTodoItemのcompletedを更新する
+   * @param {{ id:number, completed: boolean }}
+   */
+  updateTodo({ id, completed }) {
+    // `id`が一致するTodoItemを見つけ、あるなら完了状態の値を更新する
+    const todoItem = this.items.find((todo) => todo.id === id);
+    if (!todoItem) {
+      return;
+    }
+    todoItem.completed = completed;
+    this.emitChange();
+  }
+  deleteTodo({ id }) {
+    this.items = this.items.filter((todo) => {
+      return todo.id !== id;
+    });
     this.emitChange();
   }
 }
