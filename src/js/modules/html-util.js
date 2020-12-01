@@ -27,6 +27,9 @@ export function element(strings, ...values) {
   const htmlString = strings.reduce((result, str, i) => {
     const value = values[i - 1];
     if (typeof value === "string") {
+      console.log(result, "result");
+      console.log(str, "str");
+      console.log(value, "value");
       return result + escapeSpecialCharts(value) + str;
     } else {
       return result + String(value) + str;
