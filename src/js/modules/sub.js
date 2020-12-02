@@ -53,6 +53,7 @@ export class App {
         const todoItemElement = item.completed
           ? element`<li><input type="checkbox" class="checkbox" checked><s>${item.title}</s><button class="delete">x</button></li>`
           : element`<li><input type="checkbox" class="checkbox">${item.title}<button class="delete">x</button></li>`;
+        console.log(todoItemElement);
         // チェックボックスがトグルしたときのイベントにリスナー関数を登録
         const inputCheckboxElement = todoItemElement.querySelector(".checkbox");
         inputCheckboxElement.addEventListener("change", () => {
@@ -108,6 +109,14 @@ export class App {
       });
       // containerElementの中身をtodoListElementで上書きする
       render(todoListElement, containerElement);
+      //--renderメソッド form html-util.js
+      //function render(bodyElement, containerElement) {
+      //  // containerElementの中身を空にする
+      //  containerElement.innerHTML = "";
+      //  // containerElementの直下にbodyElementを追加する
+      //  containerElement.appendChild(bodyElement);
+      //}
+
       // アイテム数の表示を更新
       todoItemCountElement.textContent = `Todoアイテム数: ${this.todoListModel.getTotalCount()}`;
     });
