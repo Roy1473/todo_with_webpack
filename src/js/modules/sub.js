@@ -11,7 +11,7 @@ export class App {
     //--継承コンストラクタ from  class TodoListModel extends EventEmitter ;
     //this.items[]
     //this._listeners = new Map
-    this.todoListModel = new TodoListModel([]);
+    this.todoListModel = new TodoListModel();
     this.todoListView = new TodoListView();
   }
 
@@ -20,6 +20,10 @@ export class App {
    * @param {string} title
    */
   handleAdd(title) {
+    //addTodo(todoItem) {
+    //  this.items.push(todoItem);
+    //  this.emitChange();
+    //}
     this.todoListModel.addTodo(
       new TodoItemModel({
         title: title,
@@ -57,15 +61,43 @@ export class App {
       //getTodoItems() {
       //  return this.items;
       //}
-      const todoListView = new TodoListView();
-      const todoListElement = todoListView.createElement(todoItems, {
+      const todoListElement = this.todoListView.createElement(todoItems, {
+        //-- class TodoListView --{
+        //createElement(todoItems, { onUpdateTodo, onDeleteTodo }) {
+        //  const todoListElement = element`<ul />`;
+        //  todoItems.forEach((todoItem) => {
+        //    const todoItemView = new TodoItemView();
+        //    const todoItemElement = todoItemView.createElement(todoItem, {
+        //      onUpdateTodo,
+        //      onDeleteTodo,
+        //    });
+        //    todoListElement.appendChild(todoItemElement);
+        //  });
+        //  return todoListElement;
+        //  }
+        //}
         onUpdateTodo: ({ id, completed }) => {
           // チェックボックスが更新されたときに呼ばれるリスナー関数
           this.todoListModel.updateTodo({ id, completed });
+          //updateTodo({ id, completed }) {
+          //  // `id`が一致するTodoItemを見つけ、あるなら完了状態の値を更新する
+          //  const todoItem = this.items.find((todo) => todo.id === id);
+          //  if (!todoItem) {
+          //    return;
+          //  }
+          //  todoItem.completed = completed;
+          //  this.emitChange();
+          //}
         },
         onDeleteTodo: ({ id }) => {
           // 削除ボタンがクリックされたときに呼ばれるリスナー関数
           this.todoListModel.deleteTodo({ id });
+          //deleteTodo({ id }) {
+          //  this.items = this.items.filter((todo) => {
+          //    return todo.id !== id;
+          //  });
+          //  this.emitChange();
+          //}
         },
       });
       // containerElementの中身をtodoListElementで上書きする

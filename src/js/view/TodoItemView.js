@@ -14,6 +14,7 @@ export class TodoItemView {
       : element`<li><input type="checkbox" class="checkbox">${todoItem.title}<button class="delete">x</button></li>`;
     const inputCheckboxElement = todoItemElement.querySelector(".checkbox");
     inputCheckboxElement.addEventListener("change", () => {
+      //コールバック関数
       onUpdateTodo({
         id: todoItem.id,
         completed: !todoItem.completed,
@@ -21,6 +22,7 @@ export class TodoItemView {
     });
     const deleteButtonElement = todoItemElement.querySelector(".delete");
     deleteButtonElement.addEventListener("click", () => {
+      //コールバック関数
       onDeleteTodo({
         id: todoItem.id,
       });
